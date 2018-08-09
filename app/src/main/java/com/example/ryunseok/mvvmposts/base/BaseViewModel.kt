@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.example.ryunseok.mvvmposts.injection.component.DaggerViewModelInjector
 import com.example.ryunseok.mvvmposts.injection.component.ViewModelInjector
 import com.example.ryunseok.mvvmposts.injection.module.NetworkModule
-import com.example.ryunseok.mvvmposts.ui.PostListViewModel
+import com.example.ryunseok.mvvmposts.ui.post.PostListViewModel
 
 
 abstract class BaseViewModel: ViewModel(){

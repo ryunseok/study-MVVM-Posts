@@ -1,7 +1,7 @@
 package com.example.ryunseok.mvvmposts.injection.component
 
 import com.example.ryunseok.mvvmposts.injection.module.NetworkModule
-import com.example.ryunseok.mvvmposts.ui.PostListViewModel
+import com.example.ryunseok.mvvmposts.ui.post.PostListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
