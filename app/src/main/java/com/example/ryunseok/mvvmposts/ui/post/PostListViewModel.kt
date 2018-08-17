@@ -25,15 +25,14 @@ class PostListViewModel():BaseViewModel() {
     lateinit var postApi: PostApi
 
     private lateinit var subscription: Disposable
+
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val errorMessage:MutableLiveData<Int> = MutableLiveData()
-    val errorClickListener = View.OnClickListener { loadPosts() }
+    val errorClickListener = View.OnClickListener { loadPosts("novel") }
     val postListAdapter: PostListAdapter = PostListAdapter()
-    var url:String = ""
-
 
     init{
-        loadPosts()
+        loadPosts("novel")
     }
 
     override fun onCleared() {
@@ -41,8 +40,15 @@ class PostListViewModel():BaseViewModel() {
         subscription.dispose()
     }
 
-    private fun loadPosts() {
-        subscription = postApi.getPosts("novel/골든 타임 외전(2권 완결)")
+    fun onItemClickListener(resource:String){
+        loadPosts(resource)
+    }
+
+
+
+
+    private fun loadPosts(targetUri:String) {
+        subscription = postApi.getPosts(targetUri)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { onRetrievePostListStart()}
@@ -64,7 +70,6 @@ class PostListViewModel():BaseViewModel() {
     }
     private fun onRetrievePostListSuccess(postList:List<Post>){
         postListAdapter.updatePostList(postList)
-
     }
 
     private fun onRetrievePostListError(){

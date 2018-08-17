@@ -9,12 +9,17 @@
     </data>
 
 
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/post_title"
@@ -22,22 +27,17 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             app:mutableText="@{viewModel.getPostTitle()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/post_image"
             />
 
-
-
         <TextView
-            android:id="@+id/post_body"
+            android:id="@+id/post_isdirectory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:mutableText="@{viewModel.getPostBody()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/post_title" />
+            app:mutableText="@{viewModel.getPostIsDirectory()}"
+            app:layout_constraintTop_toBottomOf="@+id/post_title"
+            app:layout_constraintStart_toEndOf="@+id/post_image"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
